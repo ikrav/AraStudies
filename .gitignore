@@ -1,0 +1,25 @@
+# Compiled source #
+###################
+*.so
+*.pyc
+*_cc.d
+*_hh.d
+*_C.d
+*_cxx.d
+*.pcm
+
+# Logs #
+########
+*.log
+
+# ROOT files, ntuples #
+#######################
+*.root
+
+# Local directories where output goes #
+#######################################
+# ... none at the moment ...
+
+# Backup copies #
+#################
+*~
