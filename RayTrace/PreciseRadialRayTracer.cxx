@@ -344,7 +344,7 @@ void PreciseRadialRayTracer::GetCase(double &minTheta, double maxTheta) {
 //
 //
 //
-bool PreciseRadialRayTracer::TraceRay(bool draw, &n) {
+bool PreciseRadialRayTracer::TraceRay(bool draw, int &n) {
 
   fIVolley = 0;
   fDraw = draw;
