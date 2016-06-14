@@ -119,7 +119,8 @@ bool findRayTrace(PreciseRadialRayTracer *tracer,
   tracer->SetVerbosity(0); // medium=2
   
   // true: draw rays onto TCanvas, false: do not, if no argument supplied defaults to false
-  bool success = tracer->TraceRay(true); 
+  int nSolutions = 0;
+  bool success = tracer->TraceRay(nSolutions, true); 
   
 //   if(success) {
 //     printf("For Z= %f R= %f solution ok\n", Z2, R1);
