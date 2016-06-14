@@ -344,7 +344,7 @@ void PreciseRadialRayTracer::GetCase(double &minTheta, double maxTheta) {
 //
 //
 //
-bool PreciseRadialRayTracer::TraceRay(bool draw) {
+bool PreciseRadialRayTracer::TraceRay(bool draw, int &n) {
 
   fIVolley = 0;
   fDraw = draw;
@@ -416,6 +416,9 @@ bool PreciseRadialRayTracer::TraceRay(bool draw) {
     fNSolution = 1;
     Volley(maxTheta,false,false,kBlack);
   }
+
+	std::cout << fNSolution << std::endl;
+	n = fNSolution;
 
   if(fSuccess==1) return true;
   else return false;
