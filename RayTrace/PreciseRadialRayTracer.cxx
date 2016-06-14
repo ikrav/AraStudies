@@ -344,7 +344,7 @@ void PreciseRadialRayTracer::GetCase(double &minTheta, double maxTheta) {
 //
 //
 //
-bool PreciseRadialRayTracer::TraceRay(bool draw, int &n) {
+bool PreciseRadialRayTracer::TraceRay(int &numSolutions, bool draw) {
 
   fIVolley = 0;
   fDraw = draw;
@@ -562,7 +562,7 @@ int PreciseRadialRayTracer::AdvanceRay(int stopCond, double stoptime, bool debug
   double xyStep = diststep*sin(fLocalAng);
   double zStep  = diststep*cos(fLocalAng);
 
-  if(isnan(zStep)) zStep = 0.0;
+  if(std::isnan(zStep)) zStep = 0.0;
   
   double fake1, fake2;
 

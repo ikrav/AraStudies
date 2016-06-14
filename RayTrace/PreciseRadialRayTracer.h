@@ -140,7 +140,7 @@ class PreciseRadialRayTracer {
   void           GetCase(double &minTheta, double maxTheta);
   double         GetDrop(double minTheta);
   double         NofZ2(double z);
-  bool           TraceRay(bool draw=false, int &n);
+  bool           TraceRay(int &numSolutions, bool draw=false);
   int            Volley(double TrajectoryAngle, bool debug, bool draw, int color);
   void           TimeVolley(double TrajectoryAngle, double stoptime, int color);
   void           FindDownCoordsFromUpRay(double &xystep, double &zstep, double &diststep, bool debug);
