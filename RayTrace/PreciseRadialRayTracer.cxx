@@ -418,7 +418,7 @@ bool PreciseRadialRayTracer::TraceRay(int &numSolutions, bool draw) {
   }
 
 	std::cout << fNSolution << std::endl;
-	n = fNSolution;
+	numSolutions = fNSolution;
 
   if(fSuccess==1) return true;
   else return false;
