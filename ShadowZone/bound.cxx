@@ -9,16 +9,16 @@
 #include <iostream>
 #include <vector>
 
-TGraph * bound();
+TGraph * bound(double xGlobal, double yGlobal);
 double thetaNext(double z);
 
 // iA, iB, and iC are index of refraction constants 
-const double iA = 1.78, iB = 0.4272, iC = 0.016;
-const double FLOOR = -300;
+const double iA = 1.77, iB = 0.4272, iC = 0.016;
+const double FLOOR = -2400;
 const double ANTZ = -170;
-const int INC = 1;
+const int INC = 10;
 
-TGraph * bound() {
+TGraph * bound(double xGlobal, double yGlobal) {
 	
 	PreciseRadialRayTracer *tracer = new PreciseRadialRayTracer();
 	tracer->SetDestination(0, 0, -170);
@@ -32,10 +32,13 @@ TGraph * bound() {
 	
 	// find number of indices needed to hold results for the graph
 	int n = ((FLOOR - ANTZ) / INC) * -1;
-	double zPoints[n];
-	double rPoints[n];
+	double zPoints[n + 1];
+	double rPoints[n + 1];
 	
-	for(int i = 0; i < n; i++) {
+	zPoints[0] = xGlobal;
+	rPoints[0] = yGlobal;
+	
+	for(int i = 1; i < n; i++) {
 		
 		zPoints[i] = z;
 		rPoints[i] = r;
