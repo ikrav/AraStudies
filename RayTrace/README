@@ -1,0 +1,9 @@
+
+Run a simple example from root prompt as follows:
+
+.L ASlibEdit.cxx+
+.L PreciseRadialRayTracer.cxx+
+.x test.C
+
+The example draws all possible rays between the origin and the destination.
+The locations are set inside of the test.C script.
