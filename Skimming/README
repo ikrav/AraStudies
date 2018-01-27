@@ -1,0 +1,24 @@
+
+This directory is for skimming utilities.
+
+
+singleton.cc - takes an ARA datafile with many events and saves a single event 
+    af the given index into a separate file.
+
+    INPUT: Index of target event, path of source file, path of output file. Source 
+    file is assumed to contain a TTree named 'eventTree' which, in turn, is expected 
+    to contain a branch named 'event'. Index must be an integer and must be within the 
+    bounds of 'eventTree'. The entries in the source tree must be of type RawAtriStationEvent*.
+
+    OUTPUT: File containing only the target event. Output will be formatted as a TTree named
+    'eventTree' and will contain a branch named 'event'.
+
+    E.g. place the fourth event (index 3) in "old.root" into a singleton file "new.root"...
+
+      root [0] .x singleton.cc(3, "old.root", "new.root")
+
+    WARNING: All arguments are assumed to be valid. Invalid arguments will *not* be caught before
+    reaching the ROOT API and will result in undefined behavior.
+
+    The script loads the libAraEvent.so from the AraRoot libraries location.
+
