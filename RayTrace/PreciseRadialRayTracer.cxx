@@ -864,7 +864,7 @@ double PreciseRadialRayTracer::GetAngularChange(double xcompearth, double ycompe
   if(inBetweenAng>(M_PI/2.0)) theta = M_PI-inBetweenAng;
   double opptheta = (M_PI/2.0)-theta;
   
-  if(theta>CriticalAngle && !isnan(CriticalAngle)) { reflection = true; /*printf("In angle = %.9f  Out angle = %.9f \n",inBetweenAng*r2d,2*opptheta*r2d) ;*/return (2.0*opptheta);}
+  if(theta>CriticalAngle && !std::isnan(CriticalAngle)) { reflection = true; /*printf("In angle = %.9f  Out angle = %.9f \n",inBetweenAng*r2d,2*opptheta*r2d) ;*/return (2.0*opptheta);}
   double nextAngle = asin( (IncidentIndex/RefractionIndex)*sin(theta));
   if(theta<M_PI/2.0 && (theta+fabs(nextAngle-theta))>M_PI/2.0) { reflection = true; }
   return fabs(nextAngle-theta);
