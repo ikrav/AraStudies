@@ -450,7 +450,7 @@ void SaveToPdf(vector<TCanvas*> can, TString pdfname) {
   TString end = pdfname;
   end += "]";
   can[0]->Print(beg);
-  for(int i=0; i<can.size(); i++) can[i]->Print(pdfname);
+  for(uint i=0; i<can.size(); i++) can[i]->Print(pdfname);
   can[can.size()-1]->Print(end);
 }
 
@@ -460,8 +460,8 @@ void SaveToPdf(vector < vector<TCanvas*> > can, TString pdfname) {
   TString end = pdfname;
   end += "]";
   can[0][0]->Print(beg);
-  for(int i=0; i<can.size(); i++) {
-    for(int j=0; j<can[i].size(); j++) {
+  for(uint i=0; i<can.size(); i++) {
+    for(uint j=0; j<can[i].size(); j++) {
       can[i][j]->Print(pdfname);
     }
   }
