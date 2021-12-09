@@ -467,10 +467,18 @@ int PreciseRadialRayTracer::Volley(double TrajectoryAngle, bool debug, bool draw
     raygra->SetLineColor(color);
     raygra->SetLineWidth(3);
     //raygra->SetTitle("Effect of Depth Dependant Refractive Index");
-    for(int i=0; i<xy.size(); i++) raygra->SetPoint(i,xy[i],z[i]);
+    for(uint i=0; i<xy.size(); i++) raygra->SetPoint(i,xy[i],z[i]);
     if(gPad) {
-      if(gPad->GetListOfPrimitives()->GetEntries()==0) { raygra->DrawClone("l"); printf("Drawing first trace at TrajAng = %.4f \n",TrajectoryAngle); }
-      else { raygra->DrawClone("same,l"); printf("Drawing another trace at TrajAng = %.4f \n",TrajectoryAngle); }
+      TGraph * graphClonePointer;
+      if(gPad->GetListOfPrimitives()->GetEntries()==0) { 
+	graphClonePointer  = (TGraph*)raygra->DrawClone("l"); 
+	printf("Drawing first trace at TrajAng = %.4f \n",TrajectoryAngle); 
+      }
+      else { 
+	graphClonePointer =  (TGraph*)raygra->DrawClone("same,l"); 
+	printf("Drawing another trace at TrajAng = %.4f \n",TrajectoryAngle); 
+      }
+      fRayTrajectoryVector.push_back(graphClonePointer);
     }
     delete raygra;
   }
@@ -534,7 +542,7 @@ void PreciseRadialRayTracer::TimeVolley(double TrajectoryAngle, double stoptime,
     raygra->SetLineColor(color);
     raygra->SetLineWidth(3);
     //raygra->SetTitle("Effect of Depth Dependant Refractive Index");
-    for(int i=0; i<xy.size(); i++) raygra->SetPoint(i,xy[i],z[i]);
+    for(uint i=0; i<xy.size(); i++) raygra->SetPoint(i,xy[i],z[i]);
     if(gPad->GetListOfPrimitives()->GetEntries()==0) { raygra->DrawClone("l"); printf("Drawing first trace at TrajAng = %.4f \n",TrajectoryAngle); }
     else { raygra->DrawClone("same,l"); printf("Drawing another trace at TrajAng = %.4f \n",TrajectoryAngle);}
     delete raygra;
@@ -675,8 +683,8 @@ void PreciseRadialRayTracer::FindDownCoords(double &xystep, double &zstep, doubl
   double tempang, tempRup, tempRmid, tempRdown;
   double fake1;
 
-  double xystepup,xystepmid,xystepdown;
-  double zstepup,zstepmid,zstepdown;
+  double xystepup=1,xystepmid=1,xystepdown=1; // initializations here are just to silence compiler warnings
+  double zstepup=1,zstepmid=1,zstepdown=1;    // initializations here are just to silence compiler warnings
 
   double upfactor = 1.0;
   double downfactor = 0.0;
@@ -739,8 +747,9 @@ void PreciseRadialRayTracer::FindUpCoords(double &xystep, double &zstep, double 
   double tempang, tempRup, tempRmid, tempRdown;
   double fake1;
 
-  double xystepup,xystepmid,xystepdown;
-  double zstepup,zstepmid,zstepdown;
+  // In the variables below, initialization is meaningless, just to silence compiler warnings
+  double xystepup=1,xystepmid=1,xystepdown=1;
+  double zstepup=1,zstepmid=1,zstepdown=1;
 
   double upfactor = 1.0;
   double downfactor = 0.0;
@@ -798,8 +807,9 @@ void PreciseRadialRayTracer::FindDownCoordsFromUpRay(double &xystep, double &zst
   double tempang, tempRup, tempRmid, tempRdown;
   double fake1;
 
-  double xystepup,xystepmid,xystepdown;
-  double zstepup,zstepmid,zstepdown;
+  // In the variables below, initialization is meaningless, just to silence compiler warnings
+  double xystepup=1,xystepmid=1,xystepdown=1;
+  double zstepup=1,zstepmid=1,zstepdown=1;
 
   double upfactor = 1.0;
   double downfactor = 0.0;

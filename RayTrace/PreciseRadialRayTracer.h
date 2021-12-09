@@ -115,6 +115,8 @@ class PreciseRadialRayTracer {
   std::vector<bool> fTopRefAry;
   std::vector<bool> fReflectionAry;
 
+  std::vector<TGraph*> fRayTrajectoryVector;
+
  public:
 
   PreciseRadialRayTracer();
@@ -128,6 +130,9 @@ class PreciseRadialRayTracer {
   inline bool    GetReflectionOccur(int iSol) {return fReflectionVector[iSol];};
   inline double  GetEntryOrExitXYDistance(){ return fEntryOrExitXYDist;}
   inline double  GetEntryOrExitTime(){ return fEntryOrExitTime;}
+  inline std::vector<double> GetTrajectoryDistanceVector(){return fTrajectoryDistance;};
+  inline std::vector<double> GetTravelTimeVector(){return fTravelTime;};
+  inline std::vector<TGraph*> GetRayTrajectoryVector(){return fRayTrajectoryVector;};
 
   void    SetDestination(double x,double y,double z);
   void    SetOrigin( double x, double y, double z);
